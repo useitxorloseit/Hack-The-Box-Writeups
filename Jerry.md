@@ -27,7 +27,7 @@ We can see from the above results that there is an Apache Tomcat service running
 ### Web Server
 We can visit the Apache Tomcat webserver on ```http://10.10.10.95:8080```.
 
-From here we can confirm again that the version that is running is ```7.0.88``` and that it corresponds with the Nmap version check. No trickery here.
+From here we can confirm again that the version that is running is ```7.0.88``` and that it corresponds with the version of Tomcat Nmap returned.
 
 We can click around the web panel 
 
@@ -52,3 +52,45 @@ Microsoft Windows [Version 6.3.9600]
 
 C:\apache-tomcat-7.0.88>
 ```
+
+We can check the contents of the current directory we are in using ```dir```.
+```bash
+C:\apache-tomcat-7.0.88>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is FC2B-E489
+
+ Directory of C:\apache-tomcat-7.0.88
+
+06/19/2018  04:07 AM    <DIR>          .
+06/19/2018  04:07 AM    <DIR>          ..
+06/19/2018  04:06 AM    <DIR>          bin
+06/19/2018  06:47 AM    <DIR>          conf
+06/19/2018  04:06 AM    <DIR>          lib
+05/07/2018  02:16 PM            57,896 LICENSE
+10/09/2020  07:04 AM    <DIR>          logs
+05/07/2018  02:16 PM             1,275 NOTICE
+05/07/2018  02:16 PM             9,600 RELEASE-NOTES
+05/07/2018  02:16 PM            17,454 RUNNING.txt
+06/19/2018  04:06 AM    <DIR>          temp
+10/09/2020  08:34 PM    <DIR>          webapps
+06/19/2018  04:34 AM    <DIR>          work
+               4 File(s)         86,225 bytes
+               9 Dir(s)  27,602,845,696 bytes free
+```
+
+### Flags
+If we run ```whoami``` it turns out we're running as ```nt authority\system```. Not a very good idea to be running a vulnerable server as ```system```. 
+
+We can now navigate to ```C:\Users\Administrator\Desktop\flags>``` and use ```type``` command to read the flag file. Both the user and root flags are in this file.
+
+## What have we learned
+##### Search
+When hunting around for exploits, don't just look for ```Unauthenticated RCEs```. The Tomcat server was using default credentials that can we found in one of the status pages. Systems can be setup, but they might not be setup using best practices. Chaging the username and password from default would have prevented this.
+
+##### msfvenom
+This is a really cool tool. Having to creft payloads from scratch can be tiresome and without reason. Using msfvenom seriously speeds up the time and lowers the barrier for entry to get a foothold on the system.
+
+## Further Reading
+- Tomcat
+- msfvenom
