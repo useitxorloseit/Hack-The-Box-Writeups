@@ -1,4 +1,6 @@
 # Jerry
+[![Generic badge](https://img.shields.io/badge/Completed-<green>.svg)](https://shields.io/)
+
 Jerry is an Easy Windows machine, and is suggested practice for the OSCP Excam.
 
 ## Enumeration
@@ -89,7 +91,7 @@ We can now navigate to ```C:\Users\Administrator\Desktop\flags>``` and use ```ty
 When hunting around for exploits, don't just look for ```Unauthenticated RCEs```. The Tomcat server was using default credentials that can we found in one of the status pages. Systems can be setup, but they might not be setup using best practices. Chaging the username and password from default would have prevented this.
 
 ##### msfvenom
-This is a really cool tool. Having to creft payloads from scratch can be tiresome and without reason. Using msfvenom seriously speeds up the time and lowers the barrier for entry to get a foothold on the system.
+This is a really cool tool. Having to craft payloads from scratch can be tiresome and without reason. Using msfvenom seriously speeds up the time and lowers the barrier for entry to get a foothold on the system.
 
 ## Further Reading
 - Tomcat
